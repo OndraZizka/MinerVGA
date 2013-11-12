@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<meta name="Author" content="Ondra Zizka; ondra at dynawest.cz" />
+	<link rel="stylesheet" type="text/css" href="dw_styles.css" />
+	<link rel="stylesheet" type="text/css" href="mineraly.css" />
+	<script type="text/javascript" src="fce.js"></script>
+	<script type="text/javascript" src="inc.system.js"></script>
+	<script type="text/javascript" src="inc.elements.js"></script>
+	<script type="text/javascript" src="inc.konstanty.js"></script>
+<style type="text/css">
+	BODY {
+		background-color: black; color: #F5F5F5; margin: 0px; padding: 5px 5px 0px;
+		font-size: 10pt; font-family: "Verdana", sans-serif; font-weight: bold;
+	}
+	A { color: #ffe4c4; }
+	.info_nadpis {
+		position: relative; /* making .info_nadpis DIV an absolute positioned elements container */
+		text-align: center;
+		font-size: 42pt; font-family: "Times New Roman"; font-weight: bold; color:#f4a460;
+		border-color: white; border-width: 1px; border-style: solid;
+		margin-bottom: 4px;
+	}
+	.info_nadpis #verze { position: absolute; top: 0px; left: 480px; font-size: 12pt; }
+	
+	.info_normal { font-size: 10pt; font-family: "Verdana", sans-serif; font-weight: bold; }
+	.info_nadpis2 {
+		color: red;
+		text-decoration : underline;
+		cursor : pointer;
+	}
+	.info_key    { color:#fe5349; }
+	.info_small  { font-size: 8pt; font-weight: bold; }
+	
+	#povidani { margin-bottom: 3px; }
+	#povidani P { margin-top: 3px; margin-bottom: 4px; }
+	#povidani P:first-letter { padding-left: 3ex; }
+	
+	#uvod, #historie, #ovladani, #novinky, #predmety {
+		border-top: 1px solid #87cefa; padding-top: 3px; margin-top: 3px;
+		border-bottom: 1px solid #00bfff; padding-bottom: 3px; margin-bottom: 3px;
+	}
+	#uvod { height: 300px; overflow: auto; }
+	#uvod #podpis { float: right; width: 50%; padding: 20px 10px 20px; text-align: center; }
+
+	#titulky {
+		box-sizing: border-box;      /* MSIE */
+		-moz-box-sizing: border-box; /* Mozillka - normalne content-box */
+
+		/*border: 1px solid red;*/
+		overflow: auto;
+		/*padding-top: 100px; padding-bottom: 120px; / **/
+		font-weight: bold; font-size: 8pt; text-align: center;
+		border-top: 1px solid #87cefa;
+	}
+	/*#titulky_hore { height: 94px; } #titulky_dole { height: 94px; } */
+	#titulky_wrapper { padding-top: 94px; padding-bottom: 94px; }
+	#titulky #autor { margin: 50px 0px; }
+	
+	
+	#msg { overflow: auto; color: #d3d3d3; font-weight: bold; font-size: 10pt; }
+	.tony { color: #87cefa; }
+	.ucet { background-color: #fffafa; color: #9400d3; font-family: "Courier New";/* margin-right:150px;*/ }
+	.right { text-align: right; padding-right: 400px; }
+</style>
+<title> Helpskrín - Miner VGA </title>
+</head><body>
+
+<script type="text/javascript">
+if(bMSIE) document.expando = false;
+FreezeDocument(window);               // zamezi vyberu, pravymu tlacitku, presunovani  a nastavi kurzor na sipku //
+</script>
+
+<div id="obsah">
+	<div class="info_nadpis">Miner JS<div id="verze">verze 0.9.36</div></div>
+
+	<div id="povidani" class="info_normal">
+		<div class="info_nadpis2" onclick="UkazOdstavec(document.all.uvod);">Vítejte v Minerovi! :)</div>
+		<div id="uvod"><p>
+			&nbsp;&nbsp;Je jedno, co jste dělali doteď. Nyní se stáváte horníkem. Budete dolovat, hledat,
+			odstřelovat, vrtat, lámat, rozbíjet, těžit a prodávat. Budete zavaleni, zatopeni, vybouchnete,
+			napíchnete se na kaktus, snad i chytíte syfilis. Budete se léčit a určitě i zemřete. Párkrát.
+			A možná se i oženíte.
+			</p><p>
+			&nbsp;&nbsp;Můžete zaměstnat Ukrajince, kteří leccos z toho udělají za vás, ale
+			skýtá to i jistá rizika - však poznáte.
+			</p><p>
+			&nbsp;&nbsp;Vaši finanční jistotu představuje The Community Capital Bank.
+			Ta jistota spočívá v tom, že u nich máte již od začátku jistý dluh 100 Kč.
+			Pokud by se vám to náhodou zdálo málo, zadlužte se více, ovšem s rostoucí
+			výší vašeho dluhu klesá ochota CCB do vás investovat. Pokud ovšem prokážete
+			schopnost váš dluh zužitkovat tím, že budete mít velký obrat, CCB ráda půjčí ještě více.
+			</p><p>
+			&nbsp;&nbsp;Materiální zásobování naší osady obstarává Sergej Ivanov, zapřísáhlý komunista.
+			Původně vlastnil řetězec obchodů na Floridě a několik set nemovitostí v Karlových Varech,
+			pro svoje ultralevicové názory byl však odklizen Nixonovou vládou sem na Aljašku.
+			Nakoupené zboží nemá neomezenou životnost, a po určité době používání se opotřebují.
+			I kdyby používáno nebylo, může podlehnout zkáze časem - dřevo trouchniví, dynamit zvlhne atd.
+			Každého zboží můžete nakoupit více kusů.
+			</p><p>
+			&nbsp;&nbsp;Pod povrch se dostanete výhradně důlní šachtou ve výtahu vlastněném bankou CCB.
+			Ta investovala do důlní věže a výtahu, ovšem hloubka šachty není nijak závratná, a délka lana
+			je ještě menší. Pokud pocítíte potřebu dostat se hlouběji pomocí výtahu místo procházení dolu pěšky,
+			je zde možnost výměny lana za delší a prohloubení šachty, obojí je ovšem finančně velice náročné
+			a dovolit si ho mohou obvykle pouze nejúspěšnější horníci.
+			</p><p>
+			&nbsp;&nbsp;V dole je pochopitelně naprostá tma, a tak pokud se tam vydáte bez jakéhokoliv zdroje
+			světla, nejen že jste tam prakticky zbytečně, ale také jste vystaveni velikému nebezpečí úrazu či smrti.
+			Čím lepší budete mít zdroj, tím snadněji poznáte, co se okolo vás v dole ukrývá. Pozor ovšem na čas -
+			každé světlo jednou zhasne. Berte jich s sebou raději víc.
+			</p><p>
+			&nbsp;&nbsp;Ovládání hry je popsáno níže v sekci "Ovládání".
+			</p><p>
+			&nbsp;&nbsp;Vítejte v osadě Dreamer's Creek a přeji hodně úspěchů!<br/>
+			(Vaše případné úspěchy CCB odesílá přes internet na server společnosti
+			<a href="http://www.dynawest.cz">Dynawest</a>. Banka ovšem nemá
+			vlastní připojení, proto pokud budete chtít o svých úspěších dát vědet světu,
+			připojte se prosím před odesláním k internetu a CCB použije vaši linku.)
+			</p><p>
+				<div id="podpis"><div>
+					Zakladatel, majitel, starosta <br />
+					a správce osady Dreamer's Creek<br /><br />
+					skoroBc. Ondřej Žižka
+				</div></div>
+			</p>
+			
+		</div>
+		
+		<div class="info_nadpis2" onclick="UkazOdstavec(document.all.historie);">Historie hry</div>
+		<div id="historie" style="display:none;"><p>
+			&nbsp;&nbsp;Miner VGA JavaScript version je remake hry z roku 1990 od Harrella W. Stillese.
+			Začal jsem ho psát někdy v roce 1998, jenže tehdejší počítače nápor JavaScriptu prostě
+			nezvládly. Vzdal jsem marné snahy, a napsaný kód zmizel v propadlišti dějin spolu s 
+			rozbitou zipkou. Myšlenka však dřímala dál.
+			</p><p>
+			&nbsp;&nbsp;Později, v roce 2002, kdy i já měl Pentium 4, a kdy se může Explorer směle vrhnout 
+			na zpracovávání desítek obrázků a tísíců řádků kódu JavaScriptu, jsem myšlenku oprášil a jal se
+			vše dělat znova. Práce šla docela rychle, jak dosvědčí moji betatesteři (viz titulky dole) a 
+			zanedlouho bylo hotovo. Pravda, ještě stále bylo co dodělávat a opravovat, ale o tom dále.
+			</p><p>
+			&nbsp;&nbsp;No a nyní, v roce 2004, jsem na JČU ve třetím ročníku a Minera jsem si zvolil jako
+			svou bakalářskou práci. Časy se mírně změnily: Z prohlížeče Mozilla se stal vinikající prohlížeč
+			se skoro bezchybnou implementací HTML, CSS, a JavaScriptu a DOM, já jsem si koupil knihu o JavaScriptu
+			a hodně se z ní naučil a JavaScript jsem poznal do hloubky. Tak jsem zjistil, že to není prostý jazyk
+			k jednoduchému skriptování pomocí funkcí, a proto jsem začal Minera přepisovat do striktně objektové podoby.
+			</p>
+		</div>
+		
+		<div class="info_nadpis2" onclick="UkazOdstavec(document.all.ovladani);">Ovládání</div>
+		<div id="ovladani" style="display:none;">
+			<p>
+			Hra se ovládá pomocí klávesnice. Pohyb panáčka ovládejte šipkami.
+			Pokud používáte Microsoft Internet Explorer, pak zaprvé vám ho doporučuji opustit
+			a nainstalovat si <a href="http://www.mozilla.org/products/mozilla1.x/">Mozillu</a>
+			či <a href="http://www.mozilla.org/products/firefox/all.html">Firefox</a>,
+			a zadruhé musíte používat pouze šipky na numerické klávesnici se zapnutým Num-Lockem!
+			Mačkejte tedy šipky (nebo v MSIE&nbsp;<span class="info_key">4</span>,<span class="info_key">6</span>,<span 
+				class="info_key">2</span>,<span class="info_key">8</span>) pro pohyb,
+			<span class="info_key">nulou</span>&nbsp;nebo&nbsp;<span class="info_key">T</span>&nbsp;se&nbsp;otočíte a 
+			<span class="info_key">pětkou</span>,&nbsp;<span class="info_key">E</span>&nbsp;nebo&nbsp;<span 
+			class="info_key">entrem</span>&nbsp;vstupujete do budov.
+			Z jakékoliv budovy se dostanete stiskem&nbsp;<span class="info_key">X</span>.
+			</p><p>
+			Dynamit se odpaluje&nbsp;<span class="info_key">D</span>,
+			pumpu použijete&nbsp;<span class="info_key">P</span>,
+			lopatu&nbsp;<span class="info_key">L</span>,
+			krumpáč&nbsp;<span class="info_key">K</span>,
+			vrták&nbsp;<span class="info_key">V</span>,
+			sbíječku&nbsp;<span class="info_key">S</span>,
+			kbelík&nbsp;<span class="info_key">G</span>
+			a pumpu&nbsp;<span class="info_key">P</span>.
+			</p><p>
+			Dále, pokud se projeví (jakože asi jo) chyba MSIE a rozhodí se souřadnice (horník bude o půl buňky jinde),
+			mačkněte <span class="info_key">klávesu&nbsp;pod&nbsp;Esc</span>. Ano, středník, tildu, apostrof, nebo co tam je všechno za bordel. A pak znovu.
+			To by mělo skoro najistotu všechno srovnat a učesat.
+			</p><p>
+			Pokud chcete hru uložit, musíte se nejprve dostat na povrch a tam stiskněte&nbsp;<span class="info_key">Shift&nbsp;+&nbsp;S</span>&nbsp;(velké&nbsp;S).
+			Nahrávat můžete kdykoliv odkudkoliv stiskem&nbsp;<span class="info_key">Shift&nbsp;+&nbsp;L</span>&nbsp;(velké&nbsp;L).
+			</p><p>
+			Tuto obrazovku dostanete také pomocí klávesy&nbsp;<span class="info_key">F1</span>.			
+			</p>
+		</div>
+		
+		<div class="info_nadpis2" onclick="UkazOdstavec(document.all.novinky);">Co je nového?</div>
+		<div id="novinky" style="display:none;">
+			&nbsp;&nbsp;No tak to je relativní. Podle toho, co jste naposled viděli :) Ale asi si toho všimnete
+			sami. Takže z těch důkležitějších věcí:
+			<span class="info_key">f)</span>&nbsp;Kromě toho, že je celá hra vevnitř úplně přepsaná, což navenek moc nepoznáte,
+				můžete nyní používat dynamit. Dostanete ho u Sergeje za
+				<script type="text/javascript">document.write(window.opener.cPredmet.NajdiTypPredmetu(g_dynamit).iPrice+" "+window.opener.CURRENCY);</script>, odpálíte ho stiskem 'D'.
+			<span class="info_key">e)</span>&nbsp;Ukládání! Save & Load! Prostě už můžete pokračovat tam, 
+				kde jste naposled uznali, že jste na tom dobře. Ale pozor - jde to jen na povrchu.
+			<span class="info_key">a)</span>&nbsp;Za těžbu a výtah se teď platí, takže se vyplatí pořádnej průzkum. 
+			<span class="info_key">b)</span>&nbsp;Funguje obchod. Nevim jestli to má bejt Tony nebo Sergej. 
+				Zatim Sergej, časem možná přibyde konkurence :)
+			<span class="info_key">c)</span>&nbsp;Přibyl tenhle helpscreen, najdete ho taky v infobaráčku.
+			<span class="info_key">d)</span>&nbsp;Drobné změny a opravy najdete v
+				<a href="work.txt">work.txt</a>.  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="info_key">Indžoj! :)</span>
+		</div>
+		
+		<!-- Predmety -->
+		<div class="info_nadpis2" onclick="UkazOdstavec(document.all.predmety);">Předměty</div>
+		<div id="predmety" style="display:none;">
+			<table border="0" cellpadding="4" cellspacing="0" class="info_normal">
+			<tr><td width="80" align="left" valign="middle">
+				<img src="img/inv_louc.gif" border="0" alt="" width="16" height="24"
+				/><img src="img/inv_lampa.gif" border="0" alt="" width="16" height="24"
+				/><img src="img/inv_halogen.gif" border="0" alt="" width="16" height="24"
+				/><img src="img/inv_baterie.gif" border="0" alt="" width="16" height="24"/>
+				</td>
+				<td valign="middle">Zdroje světla jako louč nebo lampa umožňují práci
+				 v temných dolech. Kvalitnější osvětlení zvyšuje šance na objevení nerostů.</td></tr>
+							
+			<tr><td width="80" align="left" valign="middle">
+				<img src="img/inv_lopata.gif" border="0" alt="" width="16" height="24"
+				/><img src="img/inv_krumpac.gif" border="0" alt="" width="16" height="24"
+				/><img src="img/inv_vrtak.gif" border="0" alt="" width="16" height="24"
+				/><img src="img/inv_sbijecka.gif" border="0" alt="" width="16" height="24"
+				/><img src="img/inv_dynamit.gif" border="0" alt="" width="16" height="24"/>
+				</td>
+				<td valign="middle">
+					Odedávna líné lidstvo si vždy vymýšlelo nástroje, které by jim zajistily více času na lelkování.
+					Tak se stalo, že ani horníci se nehrabou v zemi rukama, ale mají lopaty, dláta, krumpáče.
+					Jistě, jsou drahé, ale ve výsledku těžbu zefektivní.</td></tr>
+			
+			<tr><td width="80" align="left" valign="middle">
+				<img src="img/inv_kbelik.gif" border="0" alt="" width="16" height="24"/>
+				<img src="img/inv_pumpa.gif" border="0" alt="" width="16" height="24"/></td>
+				<td valign="middle">Někdy se stane, že jediná cesta na povrch je zákeřně odříznuta vodou.
+				Pokud se nejedná o proudy z pramene, je možné vodu přečerpat jinam.</td></tr>
+			</table>
+		</div>
+	</div>
+		
+	<!-- Titulky -->
+	<div id="titulky" class="info_normal">
+		<div id="titulky_wrapper">
+
+			<div id="autor">
+			Autor<br />
+			<a href="http://ondra.zizka.cz/">Ondra Žižka</a><br />
+			<a href="http://www.dynawest.cz/">(Dynawest.cz)</a>
+			</div>
+			
+			Námět a původní hra pro DOS<br /> Harrel W. Stilles<br /><br />
+			
+			Grafika<br />Harrel W. Stilles, Ondra Žižka<br /><br />
+			
+			Betatesteři 2004:<br />
+			Jan Jára, vedoucí diplomové práce<br />
+			Lucka Hanzálková<br />
+			
+			Betatesteři 2002:<br />
+			Lucka Hanzálková (MSIE 5.5)<br />
+			Tomáš Náhlík<br />
+			<a href="http://www.volny.cz/jkyri/" target="personal">Chozé Kyrian</a><br />
+			<a href="http://www.dynawest.cz/">Libor Suchý</a><br />
+			Jarda Sýbek<br />
+			<a href="http://ruaki.diaryland.com/">Icha Icha Paradise</a><br />
+			Jirka Hlavenka, <a href="http://www.zizka.cz/">Eva Žižková</a> a další.<br /><br />
+			
+			<br /><br />
+			
+			Při tvorbě hry nebylo zraněno žádné zvíře.<br />
+			Jakákoliv podobnost se skutečností je náhodná.<br />
+			Všechna práva vyhrazena.<br />
+			(c) 2002 Ondra Žižka
+
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript">
+
+// Zkryje vsechny odstavce a ukaze urceny //
+function UkazOdstavec(odst){
+	document.all.uvod.style.display = "none";
+	document.all.historie.style.display = "none";
+	document.all.ovladani.style.display = "none";
+	document.all.novinky.style.display = "none";
+	document.all.predmety.style.display = "none";
+	odst.style.display = "";
+	OnResize();
+}
+											 
+// Scrolluje titulky //
+function runTimer() {
+	div.scrollTop += 1;
+	// Start over when end of document is reached.
+	if(div.scrollTop >= div.scrollHeight - div.clientHeight){ div.scrollTop = 0; }
+	tScroll = window.setTimeout("runTimer();", 100);
+}
+
+/*  Zpravy API  */
+function PosliZpravu(str, clss){ PosliZpravuDoOkna(window, str, clss); }
+
+// Synchronizuje udaj o penezich //
+/*function SynchronizePageInfo(pan){
+	document.all.penize.innerHTML = Round2(pan.penize);
+}*/
+
+// OnKeyPressed - zpracovava stisky klavesnice //
+function OnKeyPressed(e){
+	if(bMSIE){ e = window.event; }
+	if(e.ctrlKey || e.altKey) return true;
+	
+	var code = bMSIE ? e.keyCode : e.which;	
+	switch(code){
+		case 120: case 27:                            // x + esc
+			if(window.opener == null) break;
+			//panacek.SynchronizeInfo();
+			window.opener.focus(); window.close(); break;
+	}
+}
+
+// OnResize() - netreba, unresizable //
+function OnResize(e){
+	if(bMSIE){ e = window.event; }
+	
+	// uprava vysky titulku //<br>
+	div = document.all.titulky;
+	var point = GetXY(div);
+	var iWinHei = bMSIE ? document.body.clientHeight : window.innerHeight;
+	var iDivHei = (iWinHei - point.y - 0);
+	div.style.height = iDivHei+"px";
+	document.all['titulky_wrapper'].style.paddingTop    =
+	document.all['titulky_wrapper'].style.paddingBottom = div.clientHeight +"px";
+	if(!e || e.type == "load")
+		div.scrollTop = iDivHei - 33;
+}
+
+// OnLoad() //
+function OnLoad(){
+	if(!window.opener) return false;  // Musi byt otevreno z hlavniho okna //
+	panacek = window.opener.game.panacek;
+	
+	// document.all => Mozilla //
+	if(!bMSIE){
+		document.all = new cElementsById(document, "#all#");
+		document.readyState = "loaded";
+	}
+	
+	// Uprava vysky titulku //
+	/*div = document.all.titulky;
+	//DumpObjectEx(window,"hei");
+	var point = GetXY(document.all.titulky);
+	var iWinHei = bMSIE ? document.body.clientHeight : window.innerHeight;
+	//alert("div.style.height = ("+document.body.clientHeight+" - "+point.y+")");
+	//alert("div.style.height = ("+window.innerHeight+" - "+point.y+" - 220) => "+(window.innerHeight - point.y - 220)+"px");
+	var iDivHei = (iWinHei - point.y - 0);
+	div.style.height = iDivHei+"px";
+	document.all['titulky_wrapper'].style.paddingTop    =
+	document.all['titulky_wrapper'].style.paddingBottom = div.clientHeight +"px";
+	*/
+	OnResize();
+	//div.scrollTop = iDivHei - 33;
+	
+	// Animace titulku //
+	window.setTimeout("runTimer();", 3000);	
+	
+	(bMSIE ? document.body : window).onkeypress = OnKeyPressed;
+	
+	if(!bMSIE){ document.readyState = "complete"; }
+	
+} // OnLoad() - KONEC //
+
+var tScroll, div, panacek;
+window.onload = OnLoad;
+window.onunload = function(){ window.clearTimeout(tScroll); };
+window.onresize = OnResize;
+</script>
+</body></html>
+
+
+
+                      

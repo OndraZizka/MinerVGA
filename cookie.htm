@@ -1,0 +1,45 @@
+<HTML> <HEAD><TITLE>Cookie Counter</TITLE> <LINK REL="stylesheet" HREF="../samples.css" TYPE="text/css">  </HEAD> <BODY> <H1>Cookie Demonstration</H1>
+<script type="text/javascript">
+function parseCookie() {
+	var cookieList = document.cookie.split("; ");
+	var cookieArray = new Array();
+	var name;
+	for (var i = 0; i < cookieList.length; i++) {
+		name = cookieList[i].split("=");
+		cookieArray[unescape(name[0])] = unescape(name[1]);
+	}
+	return cookieArray;
+}
+
+// This code requires the parseCookie function.
+
+function setCookie(visits) {
+	var expireDate = new Date();
+	var today = new Date();
+	// Set an expiration date in the future.
+	expireDate.setDate(365 + expireDate.getDate());
+	// Save the number of visits.
+	document.cookie = "Visits=" + visits + "; expires=" + expireDate.toGMTString() + ";"; 
+	// Save today's time and date as the last visit.
+	document.cookie = "LastVisit=" + escape(today.toGMTString()) + "; expires=" + expireDate.toGMTString() + ";";
+}
+
+//alert(document.cookie["ahoj"]);
+alert(document.cookie);
+if ("" == document.cookie) {
+   // Initialize the cookie.
+   setCookie(1);
+   document.write("<H2>This is your first visit to our humble home page.</H2>");
+} else {
+   // Parse the cookie.
+   var cookies = parseCookie();
+
+   // Output the Welcome Back message, and increment the visit counter.
+   document.write("<H2>Welcome Back! You have visited us " + cookies.Visits++ + " time(s)!</H2>");
+   document.write("<H3>Your last visit was on " + cookies.LastVisit + ".</H3>");
+   // Replace existing cookie with an updated one.
+   setCookie(cookies.Visits);
+}
+      </SCRIPT>
+   </BODY>
+</HTML>

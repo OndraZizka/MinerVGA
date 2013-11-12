@@ -1,0 +1,180 @@
+16.11.2004
+  o Druhy cheat. Po napsani "unhide" se odkryji vsechny bunky v dole.
+	o BgColor podzemi se meni podle toho, jestli ma panacek svetlo nebo ne.
+15.11.2004
+  o Zapoèaty práce na možnosti vložit jazykové mutace.
+	o Zapoèaty práce na možnosti vložit rùzná nastaveni (hlavnì konstant).
+14.11.2004
+  o Funguje tìžba skály pomocí krumpáèe, vrtáku a sbíjeèky
+  o Funguje odlifrování závalu pomocí lopaty.
+  o První cheat :)  Staèí napsat "fruu" a... uvidíte.
+13.11.2004
+  o Funguje dynamit
+  o Prekopana cGround::RedrawCell()
+  o Vytezeni bunky je nyni vyjadreno cGroundCell.puda == g_nic; normalni puda: cGroundCell.puda == g_normal;
+  o Predmety se opotrebovavaji a zastaravaji. Jsou do dve odlisne veci - jedna zavisla na poctu pouziti, druha na case.
+    o U halogenu se misto vyhozeni halogenu nejprve zkusi najit nahradni baterie.
+11.11.2004
+  o Predelan koncept bunky - nyni ma kazda 1) obsah, 2) typ pudy
+09.11.2004
+  o Dokoncen prevod na tridy
+  o Dokonceny upravy pro kompatibilitu s Mozillou
+  o Upraveno ukládání a nahrávání hry 
+19.10.2004
+  o Zahajen prevod na tridy
+18.10.2004
+  o Zahajeny prace na diplomce
+  o Vytvorena trida AllElements, ktera bude v Mozille simulovat objekt document.all (aspon ID)
+
+
++ Prevest stringy do lang.cz.js
+  + inc.panacek.js
+  + inc.bunky.js
+  + inc.game.js
+  + inc.system.js
+- Dokoupeni delsiho lana vytahu
++ "A" v nemocnici
+- Vymyslet nejaky zpusob, jak nechat uzivatele vybrat, jakou verzi chce natahnout, a tu pak natahnout
+  - Otevrit dialog, tam vybrat, a po stisku dat window.opener.reload() nebo tak neco??
+	- Zacit na uplne jiny strance, a vybranou verzi poslat pres query string??
+- Lokalizace
+  - defaultni hodnoty - kam?
+  - stringy do zvlastniho souboru
+	+ mechanismus, jak natahnout danou verzi (cGame.LoadLocalizedStrings(sLangKey));
+- Moznost nakonfigurovat vsechny herni konstanty
+  - konstanty dat do nejakeho objektu
+	+ mechanismus, jak natahnout dane konstanty (cGame.LoadModifiedSettings(sSettingsKey));
+- Hall of Fame na server
+- Save & load na server
+- Saloon
+- Ukrajince - zlevnìní tìžby, zvýšení rizika.
+- Kupovani lana vytahu a sachty vytahu
+- Pramen a zaval opet udelat jako prekvapeni pod "neurcito.gif" - jinak je jasny, ze neurcito je nejaky mineral
+- Aby fungovaly items a jejich pouziti
+  - Dynamit:
+	  - inc.bunky.js@350 - cGround.prototype.OdbouchniDynamitXY = function(x,y, iSila) -
+		  dodelat dynamicky rozsah poskozeni podle sily.
+		+ Jeste to nejak blbne... mineraly se nechtej sebrat... asi bude chyba v Move()??
+	- Sonda: v zadaném smeru odkryje 10 - 20 bunìk
+	- Trikodér: odkrývá okruh o polomìru 6 bunìk
+- Veci tykajici se tezby presunout z cPanacek::Move() jinam, nejspis do nove funkce.
++ Totalne prekopat cGround::RedrawCell()
++ Dalsi zmena v konceptu pudy: misto bool cGroundCell::vytezeno bude tuto vlastnost reprezentovat 
+  cGroundCell::puda == g_nic a predchozi vyznam tohoto (tedy obyc puda) prevezme cGroundCell::puda == g_normal.
+- Vyhodit cInvItem a nahradit cPredmet
+  - Skoro hotovo, jeste zbyva predelat serializaci v inc.saveload.js
++ Dodelat na oblohu mracky a ptacky :)
+  + ptak (akorat neni animovanej...)
+	+ mrak
+	  + plovouci
++ Prechazim k novemu konceptu pudy - kazda bunka ma typ pudy a typ obsahu. Driv to bylo to same.
+  x OBSAH: g_nic=0, g_pt=1, g_au=2, g_ag=3, g_co=4, g_cu=5, g_lu = 13;
+    PUDA:  g_skala=6, g_pisek=7, g_tuha=8, g_zaval=9, g_pramen=10, g_sachta=12;
+    VLASTNOSTI: g_voda=11, g_methan=14;
+  x OBSAH: g_nic=0, g_pt=1, g_au=2, g_ag=3, g_co=4, g_cu=5, g_lu=6, g_dynamit=7, g_drahokam=8;
+    PUDA:  g_skala=51, g_pisek=52, g_tuha=53, g_zaval=54, g_pramen=55, g_sachta=56,  g_voda=70, g_methan=70;
+	+ OBSAH: g_nic=0, g_pt=2, g_au=3, g_ag=4, g_co=5, g_cu=6, g_lu=7, g_zemdynamit=8, g_drahokam=9;
+    PUDA:  g_nic=0, g_normal=51, g_skala=52, g_pisek=53, g_tuha=54, g_zaval=55, g_pramen=56, g_sachta=57,  g_voda=71, g_methan=72;
+    Musim dat pozor na to, jestli to pujde na sebe polozit! Maximalne dve vrstvy! (bg a img)
+  + Predelavam na cGroundCell.puda
+  + Nyni se cGround::RedrawCell() chova jinak.
+    Puvodne, pokud tam bylo cokoliv jineho nez prazdno, zobrazilo to "neurcito.gif". Pak to odkrylo, co tam vlastne je.
+    V novem konceptu se nejdrive odkryje typ pudy, potom pripadne ze tam neco je (neurcito) a nakonec typ obsahu.
+  + Jeste predelat VytezBunku nebo proc to tezi vsechno steje
+
+- V urcite urovni by mohly byt siroke vrstvy skal, zavalu a pramenu, aby se vyplatilo prikoupit si lano vytahu.		
+
+- Dole v dole by mohly byt methanove kapsy, na ktere kdyby narazil s louci nebo svitilnoum, vybouchly by. Plyn by se take mohl sirit.
+- Predelat predmety na objekty a inventar na jejich kolekci
+  - Patricne upravit ukladani a nahravani
++ V Mozille miner nezesedivi, nema CSS vlastnost filter
++ halogenka nijak nezlepsi
++ aby predmety po case dosly
++ dodelat dvourozm. pole v konstantach
++ fixed: V nemocnici uz po zmacknuti A uzdravi uplne
+- Aby u pøedmìtù byla cislicka
++ Vychytana chyba pro MSIE 5.0 a 5.5
++ Obrazky - sbijecka, halogen, akumulatory.
++ Pri najeti se neodkryje dosud neodkryta skala/voda/pramen/...
++ Zaokrouhlovat plat
++ UpravPenize(pan,kolik);
+- Najimani ukrajincu
+  - snizene hledani, hlavne zavalu
++ Aby kdyz jde do dluhu ho to zaclo prudit
+- Provest vseobecnou inflaci - asi tak 1000x
++ V zemi je rozmístìná i voda
++ Obrazky natahovat dopredu
++ Save pres cookies nebo phpko
+	+ save
+	  + maximalni delka je 4096
+		+ zkusit pres vic promennych (nejde, stejne to jde jen 4096)
+		+ zkusit pres jine okno (jde, a jde se na to)
+		+ ukladat pozici vytahu
+		+ nastavit pomocne promenne, jako cPanacek::vevytahu atd
+		+ jen na povrchu
+	+ load
+- Hall of Fame pres novy okno a PHP
++ Aby to pri tezbe ubiralo prachy
++ Chybky vychytane ve skole:
+  + v bance prepsat A na V
+  + zaval obnovuje nevytezene mineraly
+  + posuny o pul bunky - asi vyresim nejakou klavesou, + do stylu sirku <img>
+		 (asi to bylo jednim sloupcem se sachtou navic...)
+  + v nemocnici ho neuzdravi "na co staci penize"
++ focus okna "budova" pri vstupu - nemusi ho predtim zavrit...
++ Help window
+- Aby fungovaly budovy
+	+ Nemocnice
+	+ Banka
+	+ Tools
+	- Bordel
+	+ Infobaráèek
++ roztahovani a presouvani playgroundu
+
+
+// testy cookies - maximalni delka je 4097;
+	var x=0, sc="";
+	do{ document.cookie = sc += "x"; x++; } while(document.cookie == sc);
+	return alert(x);
+	
+	
+	var x=0, sc="", u = 1000;
+	var sss="";
+	for(var isss=1000; isss; isss--) sss += "|";
+	
+	do{
+		// document.cookie = (sc += "a"+u+"=x");
+		document.cookie = "a"+u+"="+sss; u++;
+		//sss += sss;
+		if(!(u%1)) alert(document.cookie);
+	} while(document.cookie != "" || u>1030);
+	//} while(++x<3);
+	return alert(x +": "+ document.cookie);/**/
+	
+	/*document.cookie = "aaaa";
+	var okno = window.open("save/miner.sav","saveload","scrollbars=0,directories=0,height=30,width=120,left=0,top=0,location=0,menubar=0,status=0,toolbar=0");
+	okno.document.cookie = "fuck";
+	alert(okno.document.cookie);
+	okno.close();
+	alert(document.cookie);*/
+	
+	
+	// Okna!!! Funguje!
+	document.cookie = "aaaab";
+	var okno = window.open("save/miner.sav","saveload","border=thin,scrollbars=0,directories=0,height=30,width=120,left=0,top=0,location=0,menubar=0,status=0,toolbar=0");
+	alert("Okno: " + okno.document.cookie);
+	okno.document.cookie = "fuckp";
+	alert("Okno: " + okno.document.cookie);
+	alert("Doc: " + document.cookie);
+	okno.close();
+	alert("Doc: " + document.cookie);
+	
+	okno = window.open("save2/miner.sav","saveload","border=thin,scrollbars=0,directories=0,height=30,width=120,left=0,top=0,location=0,menubar=0,status=0,toolbar=0");
+	alert("Okno: " + okno.document.cookie);
+	okno.document.cookie = "fucklllp";
+	alert("Okno: " + okno.document.cookie);
+	okno.close();
+	
+	okno = window.open("save/miner.sav","saveload","border=thin,scrollbars=0,directories=0,height=30,width=120,left=0,top=0,location=0,menubar=0,status=0,toolbar=0");
+	alert("Okno: " + okno.document.cookie);
+	okno.close();

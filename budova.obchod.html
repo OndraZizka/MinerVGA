@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+	<meta name="Author" content="Ondra Zizka; ondra@dynawest.cz">
+	<link rel="stylesheet" type="text/css" href="mineraly.css">
+	<script type="text/javascript" src="fce.js"></script>
+	<script type="text/javascript" src="inc.system.js"></script>
+	<script type="text/javascript" src="inc.elements.js"></script>
+	<script type="text/javascript" src="inc.konstanty.js"></script>
+<style type="text/css">
+	BODY {
+		background-color: black; color: #F5F5F5; font-family: "Verdana"; font-weight: bold;
+		margin: 0px; padding: 5px 5px 0px;
+		font-size: 10pt;
+	}
+	.tools_nadpis {
+		font-size: 42pt; font-family: "Times New Roman"; font-weight: bold; color:#00bfff; text-align: center;
+		border: 1px solid white; padding: 5px;  margin-bottom: 8px;
+	}
+	.tools_normal { font-size: 12pt; }
+	TABLE.tools_normal { font-weight: bold; }
+	
+	#tools_uvitani { font-size: 10pt; }
+	#tools_ucet {
+		font-size: 10pt;
+		border-top:    1px solid #00bfff; padding-top: 3px; margin-top: 3px;
+		/*border-bottom: 1px solid #00bfff; padding-bottom: 3px; margin-bottom: 3px;*/
+	}
+	#zbozi {
+		overflow: auto; font-size: 8pt;
+		border-top:    1px solid #00bfff; padding-top:    3px; margin-top: 3px;
+		border-bottom: 1px solid #00bfff; padding-bottom: 3px; margin-bottom: 3px;
+	}
+	.tools_cena {
+		display: block; float: left; width: 70px; text-align:right; padding-right: 6px; margin-right: 8px;
+		background-color: #1e90ff; color:white; font-size: 10pt; font-weight: bold;
+	}
+	.tools_mackni { font-size: 12pt; }
+	.tools_key    { color:#fe5349; }
+	.tools_small  { font-size: 8pt; }
+	.section_start TD { border-top:    1px solid #00bfff; }
+	
+	#msg { overflow: auto; color: #d3d3d3; font-size: 10pt; }
+	.tony { color: #87cefa; }
+	.ucet { background-color: #fffafa; color: #9400d3; font-family: "Courier New";/* margin-right:150px;*/}
+	.right { text-align: right; padding-right: 400px; }
+</style>
+<title> Sergejův smíšený bordel - Miner VGA </title>
+</head><body bgcolor="black" text="#F5F5F5">
+
+<script type="text/javascript">
+var panacek;
+if(bMSIE) document.expando = false;
+FreezeDocument(window);               // zamezi vyberu, pravymu tlacitku, presunovani  a nastavi kurzor na sipku //
+
+
+var aItemsMapped = new Array('louc','lampa','halogen','baterie', 'lopata','krumpac','vrtak','sbijecka','dynamit', 'kbelik','pumpa');
+var aItemsCeny   = new Array(  100 ,   600 ,    2400 ,     400 ,     200 ,     400 ,  1200 ,    10000 ,    3000 ,     100 ,  4200 );
+var aItemsNazvy  = new Array('louč','lampu','halogen','baterii', 'lopatu','krumpáč','vrták','sbíječka','dynamit', 'kbelík','pumpu');
+
+var aSortiment = [
+	{ id: "louc", nazev: "louč", cena: 100 },
+	{ id: "lampa", nazev: "lampu", cena: 600 },
+	{ id: "halogen", nazev: "halogen", cena: 2400 },
+	{ id: "baterie", nazev: "baterii", cena: 400 },
+	{ id: "lopata", nazev: "lopatu", cena: 200 },
+	{ id: "krumpac", nazev: "krumpáč", cena: 400 },
+	{ id: "vrtak", nazev: "vrták", cena: 1200 },
+	{ id: "sbijecka", nazev: "sbíječka", cena: 10000 },
+	{ id: "dynamit", nazev: "dynamit", cena: 3000 },
+	{ id: "kbelik", nazev: "kbelík", cena: 100 },
+	{ id: "pumpa", nazev: "pumpu", cena: 4200 }
+];
+</script>
+
+
+<div class="tools_nadpis">Sergej - smíšené krámy ltd.</div>
+
+<div id="uvitani">Nazdar chlapééé ! Nazdar chlape, jak to šlape. :) Dobrý co.<br />
+		Hele dneska tu toho moc nemam, no zkus si vybrat. Reklamace neberu.<br />
+		No tak co to bude soudruhu?</div>
+		
+<div id="tools_ucet">Na účtu máš <span id="penize"></span>&nbsp;Kč.</div>
+
+<!-- Nákupy -->
+<div id="zbozi">
+		<table border="0" cellpadding="4" cellspacing="0" class="tools_normal">
+		
+		<!-- Pruzkum (sviceni, sonda) -->
+		
+		<tr><td width="30" align="left" valign="middle"><img src="img/inv_louc.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[0].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">A</span> pro nákup louče.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Tento důmyslný zdroj světla využívající technologie chemického spalování pryskyřice
+				se těšil oblibě již v pravěku, na práci v podzemí však není příliš vhodný - spaluje
+				totiž vzácný kyslík. Navíc nevydrží dlouho a může způsobit výbuch metanu. Pořád však
+				lepší těžit při louči než potmě.</div>
+				</td></tr>
+				
+		<tr><td width="30" align="left" valign="middle"><img src="img/inv_lampa.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[1].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">B</span> pro nákup lampy.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Lihová lampa, lidově petrolejka, je celkem solidním svítídlem. Tento hornický
+				speciál je pro maximální bezpečnost upraven tak, aby nemohl způsobit výbuh metanu.</div>
+				</td></tr>
+				
+		<tr><td width="30" align="left" valign="middle"><img src="img/inv_halogen.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[2].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">C</span> pro nákup halogenové lampy.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Halogenová lampa dává jasné ostré světlo. Jeho neutrální barevné ladění napodobující sluneční záření
+				neunavuje oči a umožňuje vidět horniny pravých barvách (TrueColor). Pořízení halogenu je poněkud nákladné,
+				je však možno dokupovat baterie, investice se tedy časem určitě vyplatí.</div>
+				</td></tr>
+				
+		<tr><td width="30" align="left" valign="middle"><img src="img/inv_baterie.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[3].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">D</span> pro nákup akumulátorů do halogenové lampy.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Akumulátor umožňuje opakované použití halogenové lampy bez nutnosti nákupu další.</div>
+				</td></tr>
+				
+		<!-- Destrukce -->
+
+		<tr class="section_start"><td width="30" align="left" valign="middle"><img src="img/inv_lopata.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[4].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">E</span> pro nákup lopaty.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Tzv. lopata je nástroj pracující na principu páky. Přenáší najednou až pět kg zeminy. Na důlní práci
+				je však nevhodný a obvykle mají lopatu v oblibě pouze cizokrajné pomocné síly.</div>
+				</td></tr>
+		
+		<tr><td width="30" align="left" valign="middle"><img src="img/inv_krumpac.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[5].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">F</span> pro nákup krumpáče.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Překotný vývoj moderní doby nahradil lopatu pro její špatnou použitelnost k narušování tvrdších struktur
+				krumpáčem. Tento jednomužný nástroj jistě urychlí práci, na skálu však ještě nestačí.</div>
+				</td></tr>
+		
+		<tr><td width="30" align="left" valign="middle"><img src="img/inv_vrtak.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[6].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">G</span> pro nákup vrtáku.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Vrták umožnuje odstranění skály překážející Partě Hic - práce nic v cestě za přírodním bohatstvím.
+				Tato metoda je však poměrně neúčinná a časově náročná.</div>
+				</td></tr>
+
+		<tr><td width="30" align="left" valign="middle"><img src="img/inv_sbijecka.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[7].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">H</span> pro nákup sbíječky.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Poslední technická revoluce v dobývání nerostného bohatství - vynález sovětských vědců
+				Pneumatovova a Klaďivova, po nichž je pojmenován jako "pneumatické kladivo", narušuje
+				skálu asi takovou rychlostí, jako by do ní bušilo krumpáčem dvacet mužů najednou. S tímto
+				technickým skvostem můze úderník dosáhnout plnění plánu i na 4500% !</div>
+				</td></tr>
+			
+		<tr><td width="30" align="left" valign="middle"><img src="img/inv_dynamit.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[8].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">I</span> pro nákup dynamitu.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Alfred Nobel dal imperialistům do rukou mocnou zbraň v podobě třaskaviny na bázi TNT.
+				Sovětští mírotvorci však odhalili i možnost jeho použití tam, kde je třeba síla velká -
+				a nevádí, že nespoutaná - v důlnictví. Roztrhá na mraky skálu v dosahu dvou - tří bloků.</div>
+				</td></tr>
+		
+		<!-- Voda -->
+		<tr class="section_start"><td width="30" align="left" valign="middle"><img src="img/inv_kbelik.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[9].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">J</span> pro nákup kbelíku.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Stará dobrá cesta na tansfer vody. S námahou, ale jistě přenesete deset litrů vody.</div>
+				</td></tr>
+			
+		<tr><td width="30" align="left" valign="middle"><img src="img/inv_pumpa.gif" border="0" alt="" width="16" height="24" /></td>
+			<td valign="middle">
+				<span class="tools_cena"><script type="text/javascript">document.write(aSortiment[10].cena)</script> Kč</span>
+				<span class="tools_mackni">Mačkni <span class="tools_key">K</span> pro nákup pumpy.</span>
+				<div class="tools_small">&nbsp;&nbsp;&nbsp;
+				Levně a rychle přečerpá X litrů vody z místa A do místa B.</div>
+				</td></tr>
+
+					
+		</table>
+</div>
+
+<div id="msg"></div>
+
+</body>
+<script type="text/javascript">
+
+// Zobrazi pocet mineralu 
+function SynchronizePageInfo(pan){
+	document.all.penize.innerHTML = Round2(pan.penize);
+	//pan.PrepoctiOdkryvKoef();
+}
+
+// OnKeyPressed - zpracovava stisky klavesnice 
+function OnKeyPressed(e){
+	if(bMSIE){ e = window.event; }
+	var code = bMSIE ? e.keyCode : e.which;
+	
+	var sItem, iCena, sName;
+	if(code>=97 && code <= 107){
+		sItem = aSortiment[code - 97].id;
+		iCena = aSortiment[code - 97].cena;
+		sName = aSortiment[code - 97].nazev;
+		if(panacek.penize < iCena){
+			PosliZpravu("Promiň, soudruhu, na sekyru ti to nedám. Komunismus nakonec stejně zvítězí. Nebo si puč v bance.","tony");
+		}else{
+			//panacek.penize -= iCena;
+			//panacek.inv.Pridej(sItem);
+			panacek.BuyItem(sItem, iCena);
+			PosliZpravu("Koupils "+sName+" za "+iCena+" Kč. Dobrej kauf.");
+		}
+	}else switch(code){
+		case 13: Pokecej(panacek); break;
+		case 120: case 27: panacek.SynchronizeInfo(); window.opener.focus(); window.close(); break; // x + esc
+		default:
+			//PosliZpravu("Eee... némám. Dneska nemam nic. Přiď jindé, OK?"); break;
+			PosliZpravu("Coo?"); break;
+	}
+	//panacek.penize = Round2(panacek.penize);
+	SynchronizePageInfo(panacek);
+}
+
+function Pokecej(pan){
+	PosliZpravu("&quot;Někdy zajdem do hospody a pokecáme, jo.&quot;","tony");
+}
+
+/*  Zpravy API  */
+function PosliZpravu(str, clss){ PosliZpravuDoOkna(window, str, clss); }
+
+// OnLoad() //
+function OnLoad(){
+	if(!window.opener) return false;  // Musi byt otevreno z hlavniho okna //
+	panacek = window.opener.game.panacek;
+	
+	// document.all => Mozilla //
+	if(!bMSIE){
+		document.all = new cElementsById(document, "#all#");
+		document.readyState = "loaded";
+	}
+	
+	var iWinHei = bMSIE ? document.body.clientHeight : window.innerHeight;
+	
+	// Uprava vysky zbozi //
+	var point = GetXY(document.all.zbozi);
+	document.all.zbozi.style.height = (iWinHei - point.y - 50)+"px";
+	
+	// Uprava vysky zprav //
+	point = GetXY(document.all.msg);
+	document.all.msg.style.height = (iWinHei - point.y - 3)+"px";
+	
+	SynchronizePageInfo(panacek);
+	PosliZpravu("Pro opuštění obchodu zmáčkněte X nebo Esc.");
+	
+	(bMSIE ? document.body : window).onkeypress = OnKeyPressed;
+	(bMSIE ? document.body : window).onunload = function(){ panacek.SynchronizeInfo(); };
+
+	if(!bMSIE){ document.readyState = "complete"; }
+	
+} // OnLoad() - KONEC //
+
+window.onload = OnLoad;
+</script>
+
+</html>
+
+
+

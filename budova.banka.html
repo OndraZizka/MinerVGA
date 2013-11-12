@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<meta name="Author" content="Ondra Zizka; ondra at dynawest.cz" />
+	<link rel="stylesheet" type="text/css" href="dw_styles.css" />
+	<link rel="stylesheet" type="text/css" href="mineraly.css" />
+	<script type="text/javascript" language="JavaScript" src="fce.js"></script>
+	<script type="text/javascript" language="JavaScript" src="inc.system.js"></script>
+	<script type="text/javascript" language="JavaScript" src="inc.elements.js"></script>
+	<script type="text/javascript" language="JavaScript" src="inc.konstanty.js"></script>
+<style type="text/css">
+	BODY { background-color: black; color: #F5F5F5; }
+	.bank_nadpis {
+		font-size: 42pt;
+		font-family: "Times New Roman";
+		font-weight: bold;
+		color:#00fa9a;
+		border-color: white;
+		border-width: 1px;
+		border-style: solid;
+		text-align : center;
+	}
+	.bank_normal { font-size: 12pt; font-family: "Verdana"; font-weight: bold; }
+	.bank_small  { font-size: 10pt; font-weight: bold; }
+	.bank_small span { text-align: right; width:100%; }
+	.bank_key    { color:#fe5349; font-weight: bold; }
+	.head td    {
+		font-weight: bold;
+		padding-left: 30px;
+		text-align: right;
+	}
+	#msg { overflow: auto; color: #dadada; font-size: 10pt; }
+	.vypis { background-color: #d2cbc4; color: black; font-family: "Courier New", fixed; }
+</style>
+
+
+
+<title> The Community Capital Bank Inc. - Miner VGA </title>
+</head><body>
+
+<script type="text/javascript" language="JavaScript">
+var panacek, aKurzy;
+if(bMSIE) document.expando = false;
+FreezeDocument(window);               // zamezi vyberu, pravymu tlacitku, presunovani  a nastavi kurzor na sipku //
+</script>
+
+<div align="center"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+	<tr valign="top"><td align="center">
+	
+	<table width="720" border="0" cellpadding="0" cellspacing="5" class="bank_normal">
+	<tr><td align="center"><div class="bank_nadpis">The Community<br />Capital Bank</div></td></tr>
+	<tr><td height="15"></td></tr>
+	<tr><td>Vítejte u CCB. Jsme rádi, že se můžeme postarat o vaše finance.<br />
+		Naše ceny jsou bezkonkurenční! Protože nemáme konkurenci.<br />
+		Co pro vás můžeme udělat?</td></tr>
+	<tr><td height="1" bgcolor="#00FA9A"></td></tr>
+	
+	<tr><td align="center">
+		<table cellpadding="0" border="0" cellspacing="0" class="bank_small">
+		<tr class="head">
+			<td class="penize" style="padding-left: 0px; text-align:left">Peníze: <span id="penize" style="text-align:left; width:auto"></span>&nbsp;&nbsp;Kč</td>
+			<td>platina</td> <td>zlato</td> <td>stříbro</td> <td>měď</td> <td>uhlí</td></tr>
+		<tr><td height="1" bgcolor="#00FA9A" colspan="6"></td></tr>
+		<tr>
+			<td>Dnešní kurzy v Kč</td>
+			<td><div id="kurz_pt" class="num num pt"></div></td>
+			<td><div id="kurz_au" class="num au"></div></td>
+			<td><div id="kurz_ag" class="num ag"></div></td>
+			<td><div id="kurz_cu" class="num cu"></div></td>
+			<td><div id="kurz_co" class="num co"></div></td>
+		</tr>
+		<tr>
+			<td>Váš majetek v ks</td>
+			<td><div id="maj_pt" class="num pt"></div></td>
+			<td><div id="maj_au" class="num au"></div></td>
+			<td><div id="maj_ag" class="num ag"></div></td>
+			<td><div id="maj_cu" class="num cu"></div></td>
+			<td><div id="maj_co" class="num co"></div></td>
+		</tr>
+		<tr>
+			<td>Hodnota v Kč</td>
+			<td><div id="hod_pt" class="num pt"></div></td>
+			<td><div id="hod_au" class="num au"></div></td>
+			<td><div id="hod_ag" class="num ag"></div></td>
+			<td><div id="hod_cu" class="num cu"></div></td>
+			<td><div id="hod_co" class="num co"></div></td>
+		</tr>
+		</table>
+	</td></tr>
+
+	<tr><td height="1" bgcolor="#00FA9A"></td></tr>
+	
+	<!-- radka - klavesy -->
+	<tr><td align="center">
+			<table border="0" cellpadding="3" cellspacing="0" style="font-weight: bold;">
+			<tr><td height="20" colspan="2">Stiskněte <span class="bank_key">V</span> pro prodej všech minerálů.</td></tr>
+			<tr><td height="20">Stiskněte <span class="bank_key">P</span> pro prodej platiny,</td> <td height="20"><span class="bank_key">&gt;</span> pro vzetí úvěru 100 Kč.</td></tr>
+			<tr><td height="20">Stiskněte <span class="bank_key">Z</span> pro prodej zlata,</td>   <td height="20"><span class="bank_key">&lt;</span> pro vrácení úvěru 100 Kč.</td></tr>
+			<tr><td height="20">Stiskněte <span class="bank_key">S</span> pro prodej stříbra,</td> <td height="20"><span class="bank_key">Enter</span> pro výpis účtu.</td></tr>
+			<tr><td height="20">Stiskněte <span class="bank_key">M</span> pro prodej mědi,</td> <td height="20"><span class="bank_key">X</span> pro opuštění banky. </td></tr>
+			<tr><td height="20">Stiskněte <span class="bank_key">U</span> pro prodej uhlí,</td> <td height="20"><span class="bank_key"></span> </td></tr>
+			</table>
+	</td></tr><!-- klavesy konec -->
+	
+	<tr><td height="1" bgcolor="#00FA9A"></td></tr>
+	<tr><td><div id="msg"></div></td></tr>
+	</table>
+
+</td></tr></table></div>
+
+<script type="text/javascript">
+
+// KeyPressed - zpracovava stisky klavesnice 
+function OnKeyPressed(e){
+	if(bMSIE){ e = window.event; }
+	if(e.ctrlKey || e.altKey) return true;
+	
+	var code = bMSIE ? e.keyCode : e.which;	
+	var nosync = 0;  // Jestli se po tomto stisku klavesy ma synchronizovat info 
+	var loan = 100;
+	switch(code){
+		case 118:  // v; a je 97
+			panacek.penize += panacek.pt * aKurzy[g_pt]; panacek.pt = 0;
+			panacek.penize += panacek.au * aKurzy[g_au]; panacek.au = 0; 
+			panacek.penize += panacek.ag * aKurzy[g_ag]; panacek.ag = 0;
+			panacek.penize += panacek.cu * aKurzy[g_cu]; panacek.cu = 0;
+			panacek.penize += panacek.co * aKurzy[g_co]; panacek.co = 0;
+			break;
+		case 112: panacek.penize += panacek.pt * aKurzy[g_pt]; panacek.pt = 0; break; // p
+		case 121:
+		case 122: panacek.penize += panacek.au * aKurzy[g_au]; panacek.au = 0; break; // z, y
+		case 115: panacek.penize += panacek.ag * aKurzy[g_ag]; panacek.ag = 0; break; // s
+		case 109: panacek.penize += panacek.cu * aKurzy[g_cu]; panacek.cu = 0; break; // m
+		case 117: panacek.penize += panacek.co * aKurzy[g_co]; panacek.co = 0; break; // u
+		case 46: case 62: // . >
+			if(panacek.debt >= MAX_DEBT){ PosliZpravu("Je nám líto, pane, ale další úvěr už vám nemůžeme poskytnout."); }
+			else{
+				if(panacek.debt + loan > MAX_DEBT) loan = MAX_DEBT - panacek.debt;
+				panacek.debt += loan; panacek.penize += loan; PosliZpravu("Byl vám poskytnut úvěr ve výši "+loan+" Kč.");
+			}
+			break;
+		case 44: case 60: // , <
+			if(panacek.debt <= 0){ PosliZpravu("Celý váš úvěr již byl splacen, pane."); }
+			else{ panacek.debt -= 100; panacek.penize -= 100; PosliZpravu("Splatil jste úvěr ve výši 100 Kč. Děkujeme."); } break;		
+		case 13: VypisUctu(panacek); break;
+		case 120: case 27: nosync = 1; window.opener.focus(); window.close(); break; // x + esc
+		default: nosync = 1; break;
+	} if(!nosync){ panacek.penize = Round2(panacek.penize); SynchronizePageInfo(panacek); }
+}
+
+
+/****************************
+*   Zpravy API              *
+****************************/
+function PosliZpravu(str, clss){ PosliZpravuDoOkna(window, str, clss); }
+
+// Vypise stav uctu a uveru 
+function VypisUctu(pan){
+	PosliZpravu("&nbsp;=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=", "vypis");
+	PosliZpravu("&nbsp;Výpis z účtu č. 0723-924503-19830217 vedeného u Community Capital Bank Inc.", "vypis");
+	PosliZpravu("&nbsp;&nbsp;Zůstatek: "+Round2(pan.penize)+" Kč &nbsp; &nbsp; Úvěr: "
+		+ Round2(-pan.debt) +" Kč &nbsp; &nbsp; Total: "+ Round2(pan.penize - pan.debt)+" Kč &nbsp; -- Vaše CCB", "vypis");
+	PosliZpravu("&nbsp;=-=&nbsp;Tištěno&nbsp;na&nbsp;recyklovaném&nbsp;papíru.&nbsp;&nbsp;=-=-=&nbsp;Vyřizuje&nbsp;Lucie&nbsp;Hanzálková&nbsp;&nbsp;=-=-=", "vypis");
+	PosliZpravu("&nbsp;=-=&nbsp;Šetříme zdroje vaše i přírodní.&nbsp;&nbsp;=-=-=-=&nbsp;tel.&nbsp;(+420)&nbsp;723/924503&nbsp;=-=-=-=","vypis");
+}
+
+// Zobrazi pocet mineralu 
+function SynchronizePageInfo(pan){
+	with(document.all){
+		penize.innerHTML = Round2(pan.penize);
+		//zdravi.innerHTML = pan.zdravi;
+		maj_pt.innerHTML = pan.pt;
+		maj_au.innerHTML = pan.au;
+		maj_ag.innerHTML = pan.ag;
+		maj_cu.innerHTML = pan.cu;
+		maj_co.innerHTML = pan.co;
+		
+		hod_pt.innerHTML = Round2(pan.pt * aKurzy[g_pt]);
+		hod_au.innerHTML = Round2(pan.au * aKurzy[g_au]);
+		hod_ag.innerHTML = Round2(pan.ag * aKurzy[g_ag]);
+		hod_cu.innerHTML = Round2(pan.cu * aKurzy[g_cu]);
+		hod_co.innerHTML = Round2(pan.co * aKurzy[g_co]);
+	}
+}
+
+
+// Nahodny kurz podle parametru, x^2 //
+function GetRandomKurz(iStred, iPohyb){
+	var r = Math.random();
+	return iStred  +  iPohyb * (r*r * 2  -1);
+}
+
+
+// OnLoad() //
+function OnLoad(){
+	if(!window.opener) return false;  // Musi byt otevreno z hlavniho okna //
+	panacek = window.opener.game.panacek;
+
+	if(!bMSIE){
+		document.all = new cElementsById(document, "#all#");
+		document.readyState = "loaded";
+	}
+	
+	var windowEventsTarget = (bMSIE ? document.body : window);
+	windowEventsTarget.onkeypress = OnKeyPressed;
+	windowEventsTarget.onunload = function(){ panacek.SynchronizeInfo(); };
+	window.focus();
+	
+	// init //
+	aKurzy = new Array();
+	aKurzy[g_pt] = Round2(GetRandomKurz(shpt,30));
+	aKurzy[g_au] = Round2(GetRandomKurz(shau,8));
+	aKurzy[g_ag] = Round2(GetRandomKurz(shag,8));
+	aKurzy[g_cu] = Round2(GetRandomKurz(shcu,3));
+	aKurzy[g_co] = Round2(GetRandomKurz(shco,2));
+	
+	with(document.all){
+		kurz_pt.innerHTML = aKurzy[g_pt];
+		kurz_au.innerHTML = aKurzy[g_au];
+		kurz_ag.innerHTML = aKurzy[g_ag];
+		kurz_cu.innerHTML = aKurzy[g_cu];
+		kurz_co.innerHTML = aKurzy[g_co];
+	}
+	SynchronizePageInfo(panacek);
+	
+	// Uprava vysky zprav //
+	var iWinHei = bMSIE ? document.body.clientHeight : window.innerHeight;
+	var point = GetXY(document.all.msg);
+	document.all.msg.style.height = (iWinHei - point.y)+"px";
+	
+	if(!bMSIE){ document.readyState = "complete"; }
+	
+} // OnLoad() - KONEC //
+
+window.onload = OnLoad;
+</script>
+</body></html>

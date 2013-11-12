@@ -1,0 +1,98 @@
+/* Common CSS classes used by Dynawest.  www.dynawest.cz  */
+
+/* uplne skryta oblast (nezbyde ani misto) */
+.hidden, .display_none, .main_header { display: none; }
+
+/* margin 0 a padding 0 */
+.mp0 { margin: 0px; padding: 0px; }
+
+/* zarovnani doprava */
+.num, .right, .cislo{ text-align: right }
+/* zarovnani center */
+.center { text-align: center; }
+
+/* vlastnosti pisma */
+.ver9, .ver9 TABLE { font-family: Verdana, Helvetica, sans-serif; font-size:9pt; }
+.ver10, .ver10 TABLE { font-family: Verdana, Helvetica, sans-serif; font-size:10pt; }
+.ver12, .ver12 TABLE { font-family: Verdana, Helvetica, sans-serif; font-size:12pt; }
+.bold { font-weight: bold; }
+.small { font-size: 9pt; }
+								
+/* barvy pisma */
+.green { color: green; }
+.red { color: #DD0000; }
+.blue { color: #2277ee; }
+
+.hei100p { height:100%; }
+
+/* odstaveni odstavce */
+.odst7  { margin-top: 7px; }
+.odst10 { margin-top: 10px; }
+.odst14 { margin-top: 14px; }
+.odst20top { margin-top: 40px; }
+.odst40top { margin-top: 40px; }
+
+.td_top TD { vertical-align: top; }
+
+/* IMG */
+.black_border { border: 1px solid black; }
+.marginr10 { margin-right: 10px; }
+.float_left { float: left; }
+.float_right { float: right; }
+
+.wid250 { width: 250px; }
+.wid220 { width: 220px; }
+.wid200 { width: 200px; }
+.wid170 { width: 170px; }
+.wid120 { width: 120px; }
+.wid110 { width: 110px; }
+.wid100 { width: 100px; }
+.wid90  { width: 90px; }
+.wid80  { width: 80px; }
+.wid70  { width: 70px; }
+.wid60  { width: 60px; }
+.wid50  { width: 50px; }
+.wid50  { width: 50px; }
+.wid40  { width: 40px; }
+.wid30  { width: 30px; }
+.wid20  { width: 20px; }
+.wid100p { width: 100%; }
+.wid80p { width: 80%; }
+.fs10 { font-size: 10px; }
+.fs11 { font-size: 11px; }
+.fs12 { font-size: 12px; }
+.fs14 { font-size: 14px; }
+.fs16 { font-size: 16px; }
+.fs18 { font-size: 18px; }
+.fs20 { font-size: 20px; }
+.fs22 { font-size: 22px; }
+.fs24 { font-size: 24px; }
+
+
+/* unordered list - mensi odsazeni listu i prvku */
+.ul_normal { margin-top: 5px; margin-bottom:5px; }
+.ul_normal LI { margin-left:-15px; }
+
+/* --- UL, OL  upraveny  -------- */
+UL.normal{
+	margin: 1px 0 px 5px 40px;
+	padding-left: 0px;
+	text-indent: -5px;
+	line-height: 16px;
+}
+OL.normal{
+	margin: 1px 0px 5px 40px;
+	padding-left: 0px;
+	text-indent: -5px;
+	line-height: 16px;
+}
+
+/* debug */
+.foo, .foo * { border: 1px solid red; }
+
+/* noticka o dynawestu */
+.dynawest   { color: #eaeaf4; font-size:10pt; }
+.dynawest A { color: #eaf4ff; font-size:10pt; }
+
+.error { color: #CC0000; font-size:10pt; font-style:italic; }
+.mysql_error { color: #CC0000; font-size:10pt; font-family: Courier, sans-serif; font-style:normal; }

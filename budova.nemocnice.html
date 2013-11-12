@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+	<meta name="Author" content="Ondra Zizka; ondra at dynawest.cz" />
+	<link rel="stylesheet" type="text/css" href="dw_styles.css" />
+	<link rel="stylesheet" type="text/css" href="mineraly.css" />
+	<script type="text/javascript" language="JavaScript" src="fce.js"></script>
+	<script type="text/javascript" language="JavaScript" src="inc.system.js"></script>
+	<script type="text/javascript" language="JavaScript" src="inc.elements.js"></script>
+	<script type="text/javascript" language="JavaScript" src="inc.konstanty.js"></script>
+<style type="text/css">
+	BODY {
+		background-color: black; color: #F5F5F5; font-family: "Verdana"; font-weight: bold;
+		margin: 0px; padding: 5px 5px 0px;
+		font-size: 10pt;
+	}
+	.hosp_nadpis {
+		font-size: 42pt; font-family: "Times New Roman"; font-weight: bold; color:#fe5349; text-align: center;
+		border: 1px solid white; padding: 5px;  margin-bottom: 8px;
+	}
+	#hosp_content { margin: 15px; }
+	#hosp_uvitani { margin: 10px auto; font-size: 12pt; }
+	#hosp_finance {
+		border-top: 1px solid red; border-bottom: 1px solid red;
+		padding: 5px 0px;
+	}
+	#hosp_keys{
+		 font-size: 12pt;
+		 border-bottom: 1px solid red;
+	}
+	.hosp_key_desc { margin: 15px 0px 15px 30px; }
+	
+	.hosp_normal { font-size: 12pt; font-family: "Verdana"; font-weight: bold; }
+	.hosp_key    { color:#fe5349; }
+	.hosp_small  { font-size: 10pt; font-weight: bold; }
+	
+	#msg { overflow: auto; color: #d3d3d3; font-weight: bold; font-size: 10pt; margin: 0px; padding: 0px; }
+	.sestry { color: #87cefa; }
+	.ucet { background-color: #fffafa; color: #9400d3; font-family: "Courier New";/* margin-right:150px;*/}
+	.right { text-align: right; padding-right: 400px; }
+</style>
+<title> Nemocnice svatého Dřeváka - Miner VGA </title>
+</head><body>
+
+<script type="text/javascript">
+var panacek;
+if(bMSIE) document.expando = false;
+FreezeDocument(window);               // zamezi vyberu, pravymu tlacitku, presunovani  a nastavi kurzor na sipku //
+</script>
+
+<div class="hosp_nadpis">Nemocnice svatého Dřeváka</div>
+
+<div id="hosp_content">
+	<div id="hosp_uvitani">Vítejte u Dřeváka. Jsme rádi, že se o vás můžeme postarat.<br />
+					Věříme v Boha. Ostatní platí kešem (s pojišťovnami nemáme smlouvu).<br />
+					Co pro vás můžeme udělat?</div>
+					
+	<div id="hosp_finance">Za den léčby si účtujeme rozumných 150 Kč.<br />
+					Mohl byste potřebovat chirurgický zákrok.<br />
+					Přavděpodobná délka vaší léčby je <span id="lecbadnu">0</span> dnů za <span id="lecbacena">0</span> Kč, 
+						což <span id="staci"></span>přesahuje stav vašeho konta.<br />
+					Na vašem účtu je <span id="penize"></span>&nbsp;Kč.
+	</div>
+	
+	<div id="hosp_keys">
+		<div class="hosp_key_desc">Stiskněte <span class="hosp_key">A</span> pro pobyt do uzdravení nebo než dojdou peníze.</div>
+		<div class="hosp_key_desc">Stiskněte <span class="hosp_key">D</span> pro jednodenní léčbu.</div>
+		<div class="hosp_key_desc">Stiskněte <span class="hosp_key">S</span> pro chirurgický zákrok (za 500 Kč).</div>
+		<div class="hosp_key_desc">Stiskněte <span class="hosp_key">X</span> pro opuštění nemocnice.</div>
+	</div>
+	
+	<div id="msg"></div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+// KeyPressed - zpracovava stisky klavesnice 
+function OnKeyPressed(e){
+	if(bMSIE){ e = window.event; }
+	
+	if(e.ctrlKey || e.altKey) return true;
+	
+	code = bMSIE ? e.keyCode : e.which;
+	
+	//alert(event.keyCode);
+	var nosync = 0;
+	var lecbaCena, lecbaDnu = 1;
+	switch(code){
+		case  97:  // a - do mrte   
+			lecbaDnu = Math.ceil( (100 - panacek.zdravi) / ZDRAVI_LECBAZADEN );            // spocitame, kolik potrebuje 
+			lecbaDnu = Math.min(lecbaDnu, Math.floor(panacek.penize / CENA_LECBAZADEN) );  // dame mu, na kolik ma       
+		case 100:  // d - jeden den 
+			lecbaCena = lecbaDnu * CENA_LECBAZADEN;
+			if( panacek.penize < lecbaCena ) PosliZpravu("Bohužel, nemáte dost financí. Stráže, vyhoďte toho šupáka.");
+			else{
+				panacek.penize -= lecbaCena;
+				panacek.zdravi = Math.min(panacek.zdravi + ZDRAVI_LECBAZADEN * lecbaDnu, 100); 
+				var sDivide = ""; for(var i=0; i<60; i++) sDivide += "&divide;";
+				PosliZpravu(sDivide,"ucet");
+				PosliZpravu("&nbsp;Ucet za lecbu - "+lecbaDnu+" dnu na luzku","ucet");
+				PosliZpravu(lecbaDnu+".000&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kc&nbsp;"+CENA_LECBAZADEN+".00","ucet right");
+				PosliZpravu("Celkem Kc "+lecbaCena+".00","ucet right");
+				PosliZpravu("&nbsp;Dekujeme a brzy se vratte. &nbsp;  MUDr. Josef Zizka, PK Jih","ucet");
+				PosliZpravu(sDivide,"ucet");
+			}	break;
+			
+		case 115:  // s - chirurgie 
+			PosliZpravu("Bohužel, dnes se chirurg sbírá z opice. Včera vysál flašku technického lihu."); break;
+		
+		case 13: PokecejSeSestrami(panacek); break;
+		case 120: case 27: nosync = 1; window.opener.focus(); window.close(); break; // x + esc
+		default: nosync = 1; break;
+	} if(!nosync){ panacek.penize = Round2(panacek.penize); panacek.SynchronizeInfo(); }
+}
+
+
+// Pokec se sestrami //
+function PokecejSeSestrami(pan){
+	PosliZpravu("Sestra: &quot;"+RandomKec(aKecyNemocnice)+"&quot;","sestry");
+}
+
+/*  Zpravy API  */
+function PosliZpravu(str, clss){ PosliZpravuDoOkna(window, str, clss); }
+
+// Zobrazi pocet mineralu //
+function SynchronizePageInfo(pan){
+	with(document.all){
+		penize.innerHTML = Round2(pan.penize);
+		//zdravi.innerHTML = Math.round(pan.zdravi);
+		var lecbaDnu = Math.ceil( (100 - pan.zdravi) / CENA_LECBAZADEN );
+		lecbadnu.innerHTML = lecbaDnu;
+		lecbacena.innerHTML = lecbaDnu * 150;
+		// ... což však přesahuje / což nepřesahuje stav vašeho konta.
+		staci.innerHTML = (pan.penize > lecbaDnu * 150) ? "ne" : "však ";
+	}
+}
+
+// OnLoad() //
+function OnLoad(){
+	if(!window.opener) return false;  // Musi byt otevreno z hlavniho okna //
+	panacek = window.opener.game.panacek;
+	
+	// document.all => Mozilla //
+	if(!bMSIE){
+		document.all = new cElementsById(document, "#all#");
+		document.readyState = "loaded";
+	}
+
+	// Uprava vysky zprav //
+	var point = GetXY(document.all.msg);
+	var iWinHei = bMSIE ? document.body.clientHeight : window.innerHeight;
+	document.all.msg.style.height = (iWinHei - point.y)+"px";
+	
+	SynchronizePageInfo(panacek);
+	
+	(bMSIE ? document.body : window).onkeypress = OnKeyPressed;
+	(bMSIE ? document.body : window).onunload = function(){ panacek.SynchronizeInfo(); };
+	
+	if(!bMSIE){ document.readyState = "complete"; }
+	
+} // OnLoad() - KONEC //
+
+window.onload = OnLoad();
+</script>
+</html>

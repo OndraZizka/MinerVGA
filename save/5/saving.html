@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250"/>
+	<meta name="Author" content="Ondra Žižka; ondra at dynawest.cz"/>
+	<link rel="stylesheet" type="text/css" href="../../dw_styles.css"/>
+	<link rel="stylesheet" type="text/css" href="../saveload.css">
+	<style type="text/css">/*<![CDATA[*/
+	/*]]>*/</style>
+	<script type="text/javascript" charset="windows-1250" src="../../fce.js"></script>
+	<script charset="windows-1250" type="text/javascript" language="JavaScript" src="../../inc.elements.js"></script>
+	
+<title> Ukládám hru... </title></head>
+<body>
+
+	<div class="savingmsg">Ukládání do slotu <span id="slot"></span>...</div>
+	<script language="JavaScript">	
+	// document.readyState = "complete"  => Mozilla //
+	window.onload = function OnLoad(){
+		if(!isMSIE()){
+			document.all = new cElementsById(document, "#all#");
+			document.readyState = "loaded";
+		}
+		
+		var dh = document.location.href;
+		var cislo = dh.charAt(dh.length-13);
+		document.all.slot.innerText = cislo;	
+
+		if(!bMSIE){ document.readyState = "complete"; }
+	};
+	</script>
+
+</body></html>

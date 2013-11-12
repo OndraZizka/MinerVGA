@@ -1,0 +1,64 @@
+/* MinerJS - styles */
+
+BODY { margin: 0px; padding: 0px; background-color: black; }
+
+#splashscreen {
+	background-color:#ffebcd;
+	border-width: 1px; border-color: black;
+	text-align: center; font-family: Arial;
+}
+#splashscreen .title { color:#f4a460; font-weight:bold; font-size:30pt; font-family: Arial Black, Arial, sans-serif; }
+#splashscreen .sutitle { font-weight: bold; }
+#splashscreen .notes { font-size: 10pt; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; }
+#splashscreen .patience { font-style: italic; font-size: 10pt; margin-top: 20px; }
+
+#logo{
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	text-align: center;
+	font-family: Arial;
+	font-size: 10pt;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#logo .firstline { font-weight: bold; }
+#logo .title { color: #f4a460; font-weight: bold; font-family: Verdana, sans-serif; }
+#logo A { text-decoration: none; }
+
+#gametable { border: none; }
+#underground { background-color: #AD5200; /*display: block; visibility: visible; width: 100px; height: 100px;*/ }
+#underground TD{ width: 16px; height: 24px; }
+#underground TD IMG { width: 16px; height: 24px; }
+#playground { overflow: hidden; position:absolute; float:left; visibility: hidden; }
+
+#miner, #vytah, #mrak1, #mrak2, #mrak3, #ptak1 { position:absolute; /*display:none;*/ }
+#miner, #vytah, #mrak1, #mrak2, #mrak3, #ptak1 IMG { display: block; }
+#mrak1 { top: 15px; left: 550px; }
+#mrak2 { top: 24px; left: 240px; }
+#ptak1 { top: 20px; left: 440px; }
+
+#infotable { position:absolute; visibility: hidden; background-color:#696969; padding:10px; padding-top:0px; }
+
+
+/* ------  Infotable - zpravy  ------ */
+.info  { font-family: Verdana, sans-serif; font-size: 10pt; font-weight: bold; }
+fieldset { margin-top: -2px; margin-bottom: 0px; padding:3px; border-color: #87cefa; }
+legend { font-family: Verdana, sans-serif; font-size: 10pt; font-weight: bold; color: #f8f8ff;  }
+
+.pisek { color: #ffebcd }
+.tuha  { color: #daa520 }
+.voda   { color: #1e90ff }
+.stesti { color: #90ee90 }
+
+.normal { color: #d3d3d3; }
+.uzdraveni { color: #32cd32 }
+.uraz { color: #ff0000 }
+.smrt { background-color: #ff0000; color: #ffffff; }
+.posmrti { color: #000000; position:absolute; filter: DropShadow(Color=#fffafa, OffX=1, OffY=1); }
+#msg { overflow: auto; color: #d3d3d3; }
+.kec { border-top-width: 1px; border-top-style: solid; border-top-color: #87cefa; }
+/* ------  Infotable - zpravy  KONEC  */

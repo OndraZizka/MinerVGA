@@ -1,0 +1,51 @@
+Pocatecni penize: 1500,-
+Vytah:
+  Pocatecni hloubka  120 ft, v obchode 60ft za $100
+  Maximalni hloubka  660 ft
+  Za pouziti vytahu: $30
+
+Nemocnice:
+  Chirurgie: $300
+  Pobyt 1 den: $100
+
+Banka:
+  Platina:   273   260   231   273   258   245  251   262   261   233   236   243
+  Zlato:      58    58    47    57    53    55   50    56    56    52    48    53
+  Stribro:  10.6  11.2  17.2  10.6  19.2  12.8   15  10.2  10.4   9.2  15.4  11.6
+
+Obchod:
+  Lopata   $100
+  Krumpac  $150
+  Vrtak    $250
+  Lampa    $300
+  Kbelik   $200
+  Louc     $100
+  Dynamit  $300
+
+Tezba:           S lopatou + mineral     a krumpacem:
+  Normalni $20          $9       $22            $8
+  Pisek    $10          $4                      $4   -- nahoru $5??
+  Tuha     $30                                 $12
+  Skala s drillem: $150
+
+Objevovani:
+  Ze tam neco je: Prakticky pri prvnim kontaktu
+  Ze tam je skala: Po 14x priblizeni primo celem
+
+Vyskyty mineralu:
+  Platina  
+  Zlato    8 3
+  Stribro  
+
+Zaval vezme z boku  8%
+            z hora 10%
+            z dola  8%
+
+Pramen vezme z boku 10%
+
+Pumpovani vody: zhora $50 s pumpou
+
+Tezba platiny zdola $50, tezba stribra zdola $8, tezba zlata $10
+
+
+
